@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Almoxarifado</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+   <div id="tela-login" class="flex-center">
+        <!-- Formulário de Login -->
+        <div class="container-login" id="form-login">
+            <h1>🔐 Acesso ao Sistema</h1>
+            <input type="text" id="loginNome" placeholder="Usuário" />
+            <input type="password" id="loginSenha" placeholder="Senha" />
+            <button id="btnEntrar">Entrar</button>
+            <p class="alternar-form">Não tem conta? <a href="#" onclick="alternarFormularios()">Cadastre-se</a></p>
+        </div>
+
+        <!-- Formulário de Cadastro (Inicia escondido) -->
+        <div class="container-login" id="form-cadastro" style="display: none;">
+            <h1>📝 Criar Nova Conta</h1>
+            <input type="text" id="cadNome" placeholder="Nome Completo" />
+            <input type="text" id="cadCargo" placeholder="Cargo ou Setor" />
+            <input type="password" id="cadSenha" placeholder="Senha de Acesso" />
+            <button id="btnRegistrarConta">Criar Conta</button>
+            <p class="alternar-form">Já tem conta? <a href="#" onclick="alternarFormularios()">Faça Login</a></p>
+        </div>
+    </div>
+
+    <div id="sistema-principal" style="display: none">
+        
+        <div class="nav-abas">
+            <button class="tab-btn active" onclick="abrirAba('estoque')">Estoque</button>
+            <button class="tab-btn" onclick="abrirAba('cadastro')">Cadastrar Item</button>
+            <button class="tab-btn" onclick="abrirAba('usuarios')">Usuários</button>
+            <button class="tab-btn" onclick="abrirAba('historico')">Histórico</button>
+            <button class="btn-sair" onclick="fazerLogout()">Sair</button>
+            <button class="tab-btn" onclick="abrirAba('carrinho')">🛒 Carrinho (<span id="contagemCarrinho">0</span>)</button>
+
+        </div>
+
+        <div class="container">
+            
+            <div id="estoque" class="aba-conteudo active">
+                <h1>📦 Itens no Estoque</h1>
+                <input type="text" id="inputBusca" placeholder="Pesquisar item..." />
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantidade</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaItens"></tbody>
+                </table>
+            </div>
+            <div id="carrinho" class="aba-conteudo">
+    <h1>🛒 Carrinho de Retirada</h1>
+    
+    <div style="margin-bottom: 15px; display: flex; gap: 10px;">
+        <button onclick="finalizarPedidoCarrinho()" style="background: #2ecc71; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer;">📋 Finalizar Pedido (Dar Baixa)</button>
+        <button onclick="limparCarrinho()" style="background: #95a5a6; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer;">Esvaziar Carrinho</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Qtd Pretendida</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="tabelaCarrinho"></tbody>
+    </table>
+</div>
+
+
+            <div id="cadastro" class="aba-conteudo">
+                <h1>📝 Novo Item</h1>
+                <div class="formulario-cadastro">
+                    <input type="text" id="nomeItem" placeholder="Nome do Produto" />
+                    <input type="number" id="qtdItem" placeholder="Quantidade" />
+                    <button id="btnAdicionar">Salvar Item</button>
+                </div>
+            </div>
+
+            <div id="usuarios" class="aba-conteudo">
+                <h1>👥 Gestão de Usuários</h1>
+                <div class="formulario-cadastro">
+                    <input type="text" id="nomeUsuario" placeholder="Nome do Usuário" />
+                    <input type="text" id="cargoUsuario" placeholder="Cargo/Setor" />
+                    <input type="password" id="senhaUsuario" placeholder="Senha" />
+                    <button id="btnAdicionarUsuario">Salvar Usuário</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Cargo</th>
+                            <th>Senha</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaUsuarios"></tbody>
+                </table>
+            </div>
+
+            <div id="historico" class="aba-conteudo">
+                <h1>📜 Histórico de Movimentações</h1>
+                
+                <div style="display: flex; justify-content: space-between; margin-bottom: 15px; background: #f9f9f9; padding: 10px; border-radius: 8px;">
+                    <div>
+                        <label>Filtrar: </label>
+                        <select id="filtroTipo" onchange="filtrarHistorico()" style="padding: 5px; border-radius: 4px;">
+                            <option value="Todos">Todos os Tipos</option>
+                            <option value="Entrada">Entradas</option>
+                            <option value="Saída (Pedido)">Saídas</option>
+                            <option value="Exclusão">Exclusões</option>
+                        </select>
+                    </div>
+                    <button onclick="limparHistorico()" style="background: #95a5a6; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">Limpar Tudo</button>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data/Hora</th>
+                            <th>Ação</th>
+                            <th>Item</th>
+                            <th>Qtd</th>
+                            <th>Usuário</th> </tr>
+                    </thead>
+                    <tbody id="tabelaHistorico"></tbody>
+                </table>
+            </div>
+
+        </div> </div> <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+</body>
+</html>

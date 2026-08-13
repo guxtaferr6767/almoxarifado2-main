@@ -1,0 +1,197 @@
+/* Configurações Gerais */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Tela de Login */
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+}
+
+.container-login {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.container-login input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.container-login button {
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Sistema Principal */
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    min-height: 400px;
+}
+
+/* Navegação por Abas */
+.nav-abas {
+    display: flex;
+    gap: 5px;
+    background: #ecf0f1;
+    padding: 10px 10px 0 10px;
+    border-radius: 10px 10px 0 0;
+}
+
+.tab-btn {
+    padding: 12px 20px;
+    cursor: pointer;
+    border: none;
+    background: #bdc3c7;
+    border-radius: 8px 8px 0 0;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.tab-btn:hover { background: #b2babb; }
+
+.tab-btn.active {
+    background: white;
+    color: #3498db;
+    border-bottom: 2px solid #3498db;
+}
+
+.btn-sair {
+    background-color: #e74c3c;
+    margin-left: auto;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Tabelas Modernas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background-color: #f8f9fa;
+    color: #2c3e50;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+tr:hover { background-color: #f9f9f9; }
+
+/* Botões dentro da Tabela */
+td button {
+    padding: 6px 10px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    transition: 0.2s;
+}
+
+td button:hover { opacity: 0.8; }
+
+/* Busca e Inputs */
+#inputBusca, .formulario-cadastro input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box; /* Garante que o padding não quebre a largura */
+}
+
+/* Formulário de Cadastro */
+.formulario-cadastro {
+    max-width: 400px;
+}
+
+#btnAdicionar, #btnAdicionarUsuario {
+    background-color: #2ecc71;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Esconder/Mostrar Abas */
+.aba-conteudo { display: none; }
+.aba-conteudo.active { display: block; }
+
+.versao-site {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #95a5a6;
+    font-size: 0.8rem;
+}
+/* Links de Alternância no Login/Cadastro */
+.alternar-form {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 10px;
+}
+
+.alternar-form a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.alternar-form a:hover {
+    text-decoration: underline;
+}
+#btnRegistrarConta {
+    padding: 12px;
+    background-color: #2ecc71; /* Cor verde para diferenciar do botão azul de login */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;}
+    #contagemCarrinho {
+    background-color: #e67e22;
+    color: white;
+    padding: 1px 6px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    margin-left: 2px;
+}
